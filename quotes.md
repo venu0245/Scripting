@@ -157,14 +157,47 @@
   ```
   ![preview](images/shell15.PNG)
 
-3. AWK Command:
+#### AWK Command:
 * cut the o/p into columns
+    
   ```
   .it can be handle any type of irregular spaces
-  .compare to grep,xarg,cut command only works with `awk` command
+  .compare to grep,xarg,cut commands only works with one command `awk` 
   .field separator line : ; . , $ # @ -f
   field/colcumns $ ($1,$2,$3....$NF)
   ```
+ * it can be handle any type of irregular spaces
+
+   ```
+   free -m
+   $1,$2...$NF
+   $1-->first field
+   $NF-->nth field
+   ``` 
+   ![preview](images/awk0.PNG)
+*  field separator line : ; . , $ # @ -F
+   ![preview](images/awk1.PNG)
+   ![preview](images/awk2.PNG)
+   ![preview](images/awk3.PNG)
+   ![preview](images/awk4.PNG)
+   ```
+   . cat /etc/passwd |tail -5
+   . cat /etc/passwd |tail -5 |grep -i gnome
+      gnome-initial-setup:x:976:975::/run/gnome-initial-setup/:/sbin/nologin
+   . cat /etc/passwd |tail -5 |grep -i gnome |cut -d: -f1
+   . cat /etc/passwd |tail -5 |grep -i gnome |awk -F:         '  {print $2,$NF}'
+      x /sbin/nologin
+
+   ```
+   ![preview](images/awk5.PNG) 
+   ```
+   .difference between cut and awk command fields represanted by
+    .cut:-f1,-f2
+    .awk:$1,$2..$NF
+     cut-->(cut -d: -f1..)
+     awk-->(awk -F: '{print $1...$nf}')
+   ```
+
 
 
 
