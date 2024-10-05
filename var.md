@@ -91,7 +91,7 @@
   vim test3.sh
   #!/bin/bash
 
-   #create a user and assign passwd  by using --stdin
+   #create a user and assign password  by using --stdin
    
    user=ram
    pass=red

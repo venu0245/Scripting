@@ -2,23 +2,33 @@
 
 #### INTRODUCTION
 
-* shell script runs under bash shell
-* total shells installed
-
+* Shell script runs under bash shell
+* To check currently which shell are using
+ ```
+ [root@localhost ~]# echo $SHELL
+/bin/bash 
+ ``` 
+* To check how many shells are availble in terminal
   ```
   cat /etc/shells
   ```
   ![preview](images/shell0.PNG)
 
-* as a admin(root) user can change the user shell 
-
+* To change the shell as a `root_user` to normal `user`
+ 
   ```
-  grep -i u1 |tail /etc/passwd
-  usermod -s /bin/sh u1
-  usermod -s /bin/bash u1
+  grep -i user_name |tail /etc/passwd
+  usermod -s /bin/sh user_name
+  usermod -s /bin/bash user_name
   ```
-* user can check the own shell
-
+* as a user login into default shell `/bin/bash/`
+* as a user can't login without `bash shell`
+  .example:usermod -s /bin/csh <user_name>  
+* Check which type of shell currently are used we can run it as  
+ ```
+ echo $SHELL
+ echo $0
+ ```
  ![preview](images/shell1.PNG)
 * normal user can also the change shell `chsh` & `passwd` for the login user
 
@@ -26,7 +36,7 @@
 * echo $0
  ![preview](images/shell2.PNG)
 
-* sampple script
+* sample script
   ```
   vim tesh.sh
    who
@@ -66,23 +76,23 @@
    n new line
    t tab space
   ```
-    [root@localhost ~]# echo hello
-  hello
-  [root@localhost ~]# echo -n hello
-  hello[root@localhost ~]# echo -e hello\nworld
-  hellonworld
-  [root@localhost ~]# echo -e "hello\nworld"
-  hello
-  world
-  [root@localhost ~]# echo -e "hello\tworld"
-  hello   world
-  
+   [root@localhost ~]# echo hello
+     hello
+     [root@localhost ~]# echo -n hello
+     hello[root@localhost ~]# echo -e "hello\nhi"
+     hello
+     hi
+     [root@localhost ~]# echo -e "name\tcourse\tmobile"
+     name    course  mobile
+     
   ```
-* colouring the o/p messages `echo -e \033 & \e`
-  ![preview](images/shell5.PNG)
-
- 
-
+* colouring the outputs
+  ```
+  -e:escape sequence
+  \033:enable colour code
+  \e:enable colour code
+  ```
+ ![preview](images/shell5.PNG)
 
 
 
