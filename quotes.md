@@ -1,31 +1,64 @@
 ### QUOTES
+ 1.Single quote(' ')
+ 2.double quote(" ")
 
-* single quote:
+* 1.single quote:(' ')
+ .nothing but strict quote
   ```
-   [root@localhost ~]# echo 'hello'
-  hello
-  [root@localhost ~]# echo 'hello world'
-  hello world
+   [root@localhost ~]# echo single quote
+  single quote
+  [root@localhost ~]# echo 'single quote'
+  single quote
+  
   ```
-* double quotes:
+* 2.double quotes:(" ")
    ```
-     [root@localhost ~]# echo "hello world"
-   hello world
-   [root@localhost ~]# echo "testing
-   testing
+     [root@localhost ~]# echo quotes
+   quotes
+   [root@localhost ~]# echo "double quotes"
+   double quotes
   ```
+* Single and double quotes are giving same result
+#### Variables
+* Variables is nothing but set of data can be insided
+ ```
+   [root@localhost ~]# echo whoami $USER
+  whoami root
+  [root@localhost ~]# echo 'whoami $USER'
+  whoami $USER
+  [root@localhost ~]# echo "whoami $USER"
+  whoami root
+
+  [root@localhost ~]# echo 'date is `date`'
+  date is `date`
+  [root@localhost ~]# echo "date is `date`"
+  date is Sun Oct  6 22:58:34 IST 2024
+ ```
+* (' ')single quote: generated same assumption
+* (" ")double quote:generated into can be new assumption
+
   ![preview](images/shell6.PNG)
 
-### I/O RE-DIRECCTION  >,>>,&
+#### I/O RE-DIRECCTION  >,>>,&>
+* i/o re-direction means append date into old files to new files
+* capture the output from the file
+  >:capture the input file and into output file <new_file> but only one command can be capture(>)
+
+* >>:capturing the both files at once i.e;append the date mutliple file(>>) 
+
+* &>:working commands/scripts can be display and at a time and not display not working command/scripts and also can be display
+
  ![preview](images/shell7.PNG)
 
 #### Mail
+  * <:stdin(standard input)
 * mail sending to the user's
  ```
  mail -s u1 sample < mail.txt
  ``` 
-### static codes
-* if command is correct `0` if not correct the command `1-255` in between generate any number
+### static codes (0-255)
+* if command is correct it display '0' is successful
+* if command is not correct it displays between (1-255) is failure
 
 *  ```
    0-255
@@ -36,16 +69,24 @@
 *  ```
    [root@localhost ~]# ps
     PID TTY          TIME CMD
-   2007 pts/0    00:00:00 bash
-   3290 pts/0    00:00:00 ps
+    2007 pts/0    00:00:00 bash
+    3290 pts/0    00:00:00 ps
+    [root@localhost ~]# echo $?
+    0
+   [root@localhost ~]# pss
+    bash: pss: command not found...
+    Similar command is: 'ps'
+    [root@localhost ~]# echo $?
+    127
+   ```
+* /dev/null:nothing but hide the output,but command is correct
+  ```
+  [root@localhost ~]# ps &>/dev/null
    [root@localhost ~]# echo $?
    0
-   [root@localhost ~]# pss
-   bash: pss: command not found...
-   Similar command is: 'ps'
-   [root@localhost ~]# echo $?
-   127
-   ```
+   [root@localhost ~]# cat /dev/null
+   [root@localhost ~]#
+  ```   
 
 ### file filter commands: 
   ```
@@ -68,7 +109,8 @@
 * cat /etc/passwd |head -10 |tail -4  
   ![preview](images/shell9.PNG)   
 
-2. Based on rows (grep-command) 
+### Grep-comand (based on rows)
+* search word in the file and compare to another file
    
   ```
   grep root /etc/passwd
@@ -77,54 +119,26 @@
   grep -n -e root -e sshd -e ftp /etc/passwd
   grep -n -E 'root|adm|sshd|ftp|nobody' /etc/passwd
   ```   
-* search word in the file and compare to another file
 
-  cat test.sh 
-
-  grep -n root test.sh /etc/passwd
-  
-  ``` 
-   test.sh:6:root
-   /etc/passwd:1:root:x:0:0:root:/root:/bin/bash
-   /etc/passwd:10:operator:x:11:0:operator:/root:/sbin/nologin 
-  ```
+ 
   
 * if a word in capital/small letters in a file  
-
+ 
+ ```
   grep -i date <file_name>
-  ```
-  [root@venu62 ~]# grep -i date test.sh
-     Date
-    i-->case insensitive
-  ```
-* search and hide the word in a file and print the o/p
-
-*  grep -iv  word <file_name>
-   ```
-   [root@venu62 ~]# cat test.sh
-    whoami
-    pwd
-    Date
-    vmstat
-    parted -l
-    root
-    ftp
-    
-    [root@venu62 ~]# grep -iv pwd test.sh
-    whoami
-    Date
-    vmstat
-    parted -l
-    root
-    ftp
-   ```  
+  i:case insensitive
+  grep -iv  word <file_name
+  v:hide the word and total remove that line
+ ``` 
+### ^,$  
 * word begining of the line `^` word ending of the line `$`
   ```
-  .grep -n'^$' /etc/passwd (any file name)   
-  grep  ^root /etc/passwd 
-  grep  bash$ /etc/passwd
-  ^ --> search the word for starting
-  $ --> search the word for ending
+  [root@localhost ~]# tail /etc/passwd |grep ^venu
+  venu:x:1000:1000:venu:/home/venu:/bin/bash
+  [root@localhost ~]# tail /etc/passwd |grep  bash$
+  venu:x:1000:1000:venu:/home/venu:/bin/bash
+  preethi:x:1001:1001::/home/preethi:/bin/bash
+  [root@localhost ~]#
   ```  
   ![preview](images/shell10.PNG)
 
