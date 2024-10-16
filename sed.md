@@ -42,20 +42,57 @@
   ```
 * to change the name whole file as a same name
   ![preview](images/sed6.PNG)
-*  
-  ![preview](images/sed7.PNG)
-* to remove the password prompting
-  ```
-  sed -n '/^Password*/p' //out2/sshd_config
-  sed '/^Password*/yes/no/' /out2/sshd_config |grep ^Password
-  ```  
-  ![preview](images/sed8.PNG)
 
-*   uncomment the line in a configure files
-*  comment the line in a configure file
-  ```
-   cat -n /out2/sshd_config |grep -i usedns |sed 's/#//'
-   cat -n /etc/ssh/sshd_config  |grep -i usedns |sed 's/^#//'
-  ```    
-  ![preview](images/sed9.PNG)
+### configuration files by using `sed` command
+
+* committed and un-committed lines
+
+* cat /shells/sshd.config |grep -i dns
+ ![preview](images/sed7.PNG)
+* only one word can be search we can use `sed '/UseDNS/`
+* can be replace `yes/no`
+ ![preview](images/sed8.PNG) `sed /UseDNS/s/yes/no/` 
+* To un-commited line 
+ ![preview](images/sed9.PNG)
+* if a single word number of lines can be formed
+ ![preview](images/sed10.PNG)
+* if we use `sed  /^Password*/p`
+ ![preview](images/sed11.PNG)  
+*  if PasswordAuthentication yes  `sed '/^Password*/s/yes/no'`
+ ![preview](images/sed12.PNG)
+* word committed line # `sed /^Password*/s/^/#/`
+ ![preview](images/sed13.PNG)
+* word un-committed line #  `sed /UseDNS/s/#//`
+ ![preview](images/sed14.PNG)
+
+* configuration file `selinux`
+ ![preview](images/sed15.PNG) 
+*   cat /etc/selinux/config |grep -i selinux |sed -n '/^SELINUX*/p'
+ ![peview](images/sed16.PNG)
+*   `|sed  '/^SELINUX*/s/enforcing/permisive/'`
+ ![preview](images/sed17.PNG)
+
+### BOOT ORDER 
+*  change boot order timing
   
+  ```
+   cat /etc/default/grub |grep -i grub_timeout
+  ```
+  ![preview](images/sed18.PNG)
+* can change the boot timings
+  
+  ```
+  cat /etc/default/grub |grep -i grub_timeout |sed '/grub_timeout/s/5/10/'
+  ```  
+  ![preview](images/sed19.PNG)
+* committed the line
+  ```
+   cat /etc/default/grub |grep -i grub_timeout |sed '/grub_timeout/s/5/10/' ||sed '/GRUB_TIMEOUT/s/^/#/'
+  ```
+  ![preview](images/sed20.PNG)  
+
+### changing the names and commited 
+ ```
+ cat /etc/password |grep -i preethi |sed '/preethi/s/preethi/arjun/' |sed '/preethi/s/^/#/'
+ ```  
+ ![preview](images/sed21.PNG)
