@@ -28,7 +28,7 @@
   whoami $USER
   [root@localhost ~]# echo "whoami $USER"
   whoami root
-
+ .when use $ sysmbol we use double qoutes " "
   [root@localhost ~]# echo 'date is `date`'
   date is `date`
   [root@localhost ~]# echo "date is `date`"
@@ -50,6 +50,12 @@
 
  ![preview](images/shell7.PNG)
 
+ ```
+ 2>&1 will be existing file and non-existing file gives at a time output
+
+ ls -l script02.sh scriptx.sh 2>&1 out1
+ ```
+
 #### Mail
   * <:stdin(standard input)
 * mail sending to the user's
@@ -57,8 +63,8 @@
  mail -s u1 sample < mail.txt
  ``` 
 ### static codes (0-255)
-* if command is correct it display '0' is successful
-* if command is not correct it displays between (1-255) is failure
+* if command is correct '0' is successful
+* if command is not correct in between generate a number (1-255) is failure
 
 *  ```
    0-255
@@ -132,6 +138,7 @@
  ``` 
 ### ^,$  
 * word begining of the line `^` word ending of the line `$`
+  
   ```
   [root@localhost ~]# tail /etc/passwd |grep ^venu
   venu:x:1000:1000:venu:/home/venu:/bin/bash
@@ -151,7 +158,7 @@
   ![preview](images/shell12.PNG)
 
   
-3.  Based on columns (cut-command):
+3.  Based on columns `cut-command`:
 
   ```
   delimeter (d): . , $#@
@@ -169,16 +176,18 @@
   ```
   free -m |grep -Mem|xargs|cut -d ' ' -f1
   ```
+* `Xargs-command`is used for when irregular spaces in file   
   ![preview](images/shell15.PNG)
 
 #### AWK Command:
+* irregular spaces can be split into one word by using commands `xargs,cut` but can be  manage only one command `awk`
 * cut the o/p into columns
     
   ```
   .it can be handle any type of irregular spaces
   .compare to grep,xarg,cut commands only works with one command `awk` 
   .field separator line : ; . , $ # @ -f
-  field/colcumns $ ($1,$2,$3....$NF)
+   field/colcumns $ ($1,$2,$3....$NF)
   ```
  * it can be handle any type of irregular spaces
 
@@ -199,13 +208,13 @@
    . cat /etc/passwd |tail -5 |grep -i gnome
       gnome-initial-setup:x:976:975::/run/gnome-initial-setup/:/sbin/nologin
    . cat /etc/passwd |tail -5 |grep -i gnome |cut -d: -f1
-   . cat /etc/passwd |tail -5 |grep -i gnome |awk -F:         '  {print $2,$NF}'
+   . cat /etc/passwd |tail -5 |grep -i gnome |awk -F:  '{print $2,$NF}'
       x /sbin/nologin
 
    ```
    ![preview](images/awk5.PNG) 
    ```
-   .difference between cut and awk command fields represanted by
+    .difference between cut and awk command fields represanted by
     .cut:-f1,-f2
     .awk:$1,$2..$NF
      cut-->(cut -d: -f1..)

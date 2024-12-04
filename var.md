@@ -21,8 +21,10 @@
   bash
   echo $car
   ```
+ * if system restarts current variables can be lost 
   ![preview](images/usr0.PNG)  
-* create a environmental variables for permanent
+* create a environmental variable permanently
+  
   ```
   ls -a
   .bashrc
@@ -75,8 +77,9 @@
   ```
   ![preview](images/usr4.PNG)   
 * to changing the password for single attempt
+* passwd --help
+
   ```
-  .passwd --help
      --stdin  read new tokens from stdin (root only)
 
      echo <passwd_name>|passwd <user_name> --stdin 
@@ -105,5 +108,72 @@
    .wq!
   .chmod +x test1.sh
   ./test3.sh
+  
   ```    
   ![preview](images/usr5.PNG)
+
+*  command substitution
+   ```
+   john=`date`
+   echo $john
+   john=$(ps)
+   echo $john
+   john=$(uptime)
+   echo $john
+   ```
+
+### md5sum:message digit 5sum
+
+  date |md5sum |cut -c 1-5
+* script for md5sum   
+ ```    
+ #!/bin/bash
+  #script for using md4sum
+  
+  user=arjun
+  
+  echo "user add successful $user"
+  useradd $user
+  pass=`date|md5sum|cut -c 1-5`
+  echo $pass|passwd $user --stdin
+  
+  echo -e "user=$user\npasswd=$pass" 
+ ```
+ * ARTHMATIC SUBSTITUATIONS:
+
+ ```
+ echo 10+5
+ echo $((10+5))
+ echo $((10-5))
+ echo $((10*5))
+ a=5
+ b=10
+ echo $(($a+$b))
+ echo $(($a-$b))
+ echo $(($a*$b))  
+ ```
+* script to create a total memory for `free -m`
+
+ ```
+   #!/bin/bash
+  #script to calculate to mem for free -m
+  
+  TOTAL=`free -m |awk '/Mem/{print$2}'`
+  
+  USED=`free -m |awk '/Mem/ {print$3}'`
+  
+  FREE=`free -m |awk '/Mem/ {print$4}'`
+  
+  echo "TOTAL Mem = $TOTAL MB"
+  echo "Used Mem = $(($USED*100/$TOTAL)) %"
+  
+  echo "FREE Mem = $(($FREE*100/$TOTAL)) %"
+
+ ```
+
+
+
+
+
+
+  

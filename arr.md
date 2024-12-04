@@ -1,12 +1,24 @@
 ## Arrays
 ---------------
-* Script for user name and password by using read command password printing on the sreen
+* Script for user name and assign a password by using `read-command` while typing the password printing on the sreen
 * SheBang
+ ```
+ emp[0]=john
+ emp[1]=jhone
+ emp[2]=ali
+
+ echo ${emp[0]}
+ echo ${emp[1]}
+ echo ${emp[*]}=>all employes
+ echo ${emp[@]}=>all employes
+ echo ${#emp[*]}=>total number of employes
+ ``` 
+ 
  ```
  #!/bin/bash
  read -p "type your name: " name
  read -p "type your password: " pass
- echo -e "\nUser=\nname\nPassword=$pass"
+ echo -e "\nUser=\name\nPassword=$pass"
  wq!
  chmod +x script.s 
  ```
@@ -60,7 +72,7 @@ echo -e "\nUser=$name\npassword=$pass"
  read -p "type your name: " name
  read -s -p "type your password: " pass
  echo -e "\nUser=\nname\npassword=$pass"
- wq!
+ s--> security 
  ```
  ![preview](images/arry.06.PNG)
 * script for mathemaic calculation 

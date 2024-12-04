@@ -43,13 +43,13 @@
 * to change the name whole file as a same name
   ![preview](images/sed6.PNG)
 
-### configuration files by using `sed` command
+### To editing configuration files by using `sed` command
 
 * committed and un-committed lines
 
 * cat /shells/sshd.config |grep -i dns
  ![preview](images/sed7.PNG)
-* only one word can be search we can use `sed '/UseDNS/`
+* in conf file have a single word we can be search use this `sed '/UseDNS/`
 * can be replace `yes/no`
  ![preview](images/sed8.PNG) `sed /UseDNS/s/yes/no/` 
 * To un-commited line 
@@ -73,7 +73,7 @@
  ![preview](images/sed17.PNG)
 
 ### BOOT ORDER 
-*  change boot order timing
+*  changing the system boot order timings 
   
   ```
    cat /etc/default/grub |grep -i grub_timeout
@@ -96,3 +96,8 @@
  cat /etc/password |grep -i preethi |sed '/preethi/s/preethi/arjun/' |sed '/preethi/s/^/#/'
  ```  
  ![preview](images/sed21.PNG)
+* can also cut the based columns by using `sed-command`
+  ```
+   cat /etc/passwd |tail -3 |sed 's/preethi/venu/' |sed 's/^/#/' |cut -d: -f1,2,4
+  ``` 
+  ![preview](images/sed22.PNG)
