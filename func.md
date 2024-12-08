@@ -576,6 +576,30 @@ calc
    calc
  ```
 
+* script for ip-addresses pinging
+
+  ```
+     #!/bin/bash
+   #script for checking ip-addresses
+   
+   read -p "type the ip : " ip
+   ping -c4 $ip &>/dev/null
+   
+   if [ $? -eq 0 ];
+   then
+           echo "$ip is pinging"
+   else
+           echo "ip is not pinging"
+   
+   fi
+
+  ```
+* bash -x scriptxx.x
+
+ 0=>is pinging
+ 1=>is not pinging
+ ![preview](images/func13.PNG)  
+
 
   
 

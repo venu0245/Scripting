@@ -87,7 +87,7 @@
   ![preview](images/sed19.PNG)
 * committed the line
   ```
-   cat /etc/default/grub |grep -i grub_timeout |sed '/grub_timeout/s/5/10/' ||sed '/GRUB_TIMEOUT/s/^/#/'
+   cat /etc/default/grub |grep -i grub_timeout |sed '/sed grub_timeout/s/5/10/' ||sed '/GRUB_TIMEOUT/s/^/#/'
   ```
   ![preview](images/sed20.PNG)  
 
