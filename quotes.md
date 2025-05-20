@@ -4,35 +4,39 @@
 
 * 1.single quote:(' ')
  .nothing but strict quote
-  ```
-   [root@localhost ~]# echo single quote
-  single quote
-  [root@localhost ~]# echo 'single quote'
-  single quote
-  
-  ```
+
+ ```
+ .echo single quote
+   single quote
+ .echo 'single quote'
+   single quote
+ ```
 * 2.double quotes:(" ")
+   
    ```
-     [root@localhost ~]# echo quotes
-   quotes
-   [root@localhost ~]# echo "double quotes"
-   double quotes
+  .echo quotes
+    quotes
+  .echo "double quotes"
+    double quotes
   ```
 * Single and double quotes are giving same result
+
 #### Variables
 * Variables is nothing but set of data can be insided
  ```
-   [root@localhost ~]# echo whoami $USER
-  whoami root
-  [root@localhost ~]# echo 'whoami $USER'
-  whoami $USER
-  [root@localhost ~]# echo "whoami $USER"
-  whoami root
+ .echo whoami $USER
+   whoami root
+
+ .echo 'whoami $USER'
+   whoami $USER
+ .echo "whoami $USER"
+
+   whoami root
  .when use $ sysmbol we use double qoutes " "
-  [root@localhost ~]# echo 'date is `date`'
-  date is `date`
-  [root@localhost ~]# echo "date is `date`"
-  date is Sun Oct  6 22:58:34 IST 2024
+  .echo 'date is `date`'
+
+  .echo "date is `date`"
+   date is Sun Oct  6 22:58:34 IST 2024
  ```
 * (' ')single quote: generated same assumption
 * (" ")double quote:generated into can be new assumption
@@ -40,6 +44,7 @@
   ![preview](images/shell6.PNG)
 
 #### I/O RE-DIRECCTION  >,>>,&>
+
 * i/o re-direction means append date into old files to new files
 * capture the output from the file
   >:capture the input file and into output file <new_file> but only one command can be capture(>)
@@ -51,7 +56,7 @@
  ![preview](images/shell7.PNG)
 
  ```
- 2>&1 will be existing file and non-existing file gives at a time output
+ 2>&1 will be existing file and non-existing file capatue both at a time into a file
 
  ls -l script02.sh scriptx.sh 2>&1 out1
  ```
@@ -72,26 +77,31 @@
    1-255
    1-->failure
    ```
+
 *  ```
-   [root@localhost ~]# ps
-    PID TTY          TIME CMD
-    2007 pts/0    00:00:00 bash
-    3290 pts/0    00:00:00 ps
-    [root@localhost ~]# echo $?
-    0
-   [root@localhost ~]# pss
-    bash: pss: command not found...
-    Similar command is: 'ps'
-    [root@localhost ~]# echo $?
-    127
+   .ps
+     PID TTY          TIME CMD
+     2007 pts/0    00:00:00 bash
+     3290 pts/0    00:00:00 ps
+   
+   .echo $?
+     0
+
+    .pss
+     bash: pss: command not found...
+     Similar command is: 'ps'
+
+    .echo $?
+     127
    ```
 * /dev/null:nothing but hide the output,but command is correct
+  
   ```
-  [root@localhost ~]# ps &>/dev/null
-   [root@localhost ~]# echo $?
-   0
-   [root@localhost ~]# cat /dev/null
-   [root@localhost ~]#
+  . ps &>/dev/null
+  . echo $?
+    0
+  .cat /dev/null
+  
   ```   
 
 ### file filter commands: 
@@ -173,8 +183,11 @@
   ![preview](images/shell14.PNG)
 
 * irregular spaces to convert regular space by using `xargs` command
+
   ```
-  free -m |grep -Mem|xargs|cut -d ' ' -f1
+  free -m |grep -Mem|xargs|cut -d' ' -f1
+  cat /etc/selinux/config |grep -i selinux |cut -d' ' -f1
+  cat /etc/selinux/config |grep -i selinux |cut -d' ' -f1,2
   ```
 * `Xargs-command`is used for when irregular spaces in file   
   ![preview](images/shell15.PNG)
@@ -198,11 +211,14 @@
    $NF-->nth field
    ``` 
    ![preview](images/awk0.PNG)
+
 *  field separator line : ; . , $ # @ -F
+
    ![preview](images/awk1.PNG)
    ![preview](images/awk2.PNG)
    ![preview](images/awk3.PNG)
    ![preview](images/awk4.PNG)
+  
    ```
    . cat /etc/passwd |tail -5
    . cat /etc/passwd |tail -5 |grep -i gnome
@@ -210,14 +226,18 @@
    . cat /etc/passwd |tail -5 |grep -i gnome |cut -d: -f1
    . cat /etc/passwd |tail -5 |grep -i gnome |awk -F:  '{print $2,$NF}'
       x /sbin/nologin
+   .cat /etc/selinux/config |awk '/SELINUX/{print$2}'
+   .cat /etc/selinux/config |awk '/SELINUX/{print$3,$NF}'
 
    ```
    ![preview](images/awk5.PNG) 
+
+   ![review](images/awk6.PNG )
    ```
     .difference between cut and awk command fields represanted by
     .cut:-f1,-f2
     .awk:$1,$2..$NF
-     cut-->(cut -d: -f1..)
+     cut-->(cut -d: -f1..) 
      awk-->(awk -F: '{print $1...$nf}')
    ```
 

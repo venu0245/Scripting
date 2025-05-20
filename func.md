@@ -1,5 +1,5 @@
-### FUNCTIONS
-* Functions are set of commands in side fuction
+### FUNCTIONS:
+* Functions are set of commands in side a fuction
    ```
    venu()
    {
@@ -39,7 +39,7 @@
   ```  
  * add the function permanently
   vim .bash_profiles
-  ```
+ ```
      venu is a function
    venu ()
    {
@@ -48,35 +48,35 @@
        vmstat;
        lscpu
    }
+ ```  
     export -f venu
 
 * create a new script with command line
 
-  ``` 
-  1.check the last number used in sequence
-  2.create a new file with next number
-  3.add shebang to the file
-  4.add comment line in the file
-  5.open the file in vim editor
-  6.should apply execute permission and display information
+* check the last number used in sequence
+* create a new file with next number
+* add shebang to the file
+* add comment line in the file
+* open the file in vim editor
+* should apply execute permission and display information
+  
 
 * example:  script.09
   
-  ```
   script()
   {
  
-   .ls -1 script* |tail -1
-   .ls -1 script* |tail -1 |sed -e 's/script//' |sed -e 's/.//'
-   .i=`ls -1 script* |tail -1 |sed -e 's/script//' |sed -e 's/.//'`
-   .i=$(($i+1))
-   .echo '#!/bin/bash' >script$i.sh
-   .echo 'script for ' >>script$.sh
-   .vim script$.sh
-   .chmod +x script$.sh 
-   .ls -l script$.sh
+* ls -1 script* |tail -1
+* ls -1 script* |tail -1 |sed -e 's/script//' |sed -e 's/.//'
+* i=`ls -1 script* |tail -1 |sed -e 's/script//' |sed -e 's/.//'`
+* i=$(($i+1))
+* echo '#!/bin/bash' >script$i.sh
+* echo 'script for ' >>script$.
+* vim script$.sh
+* chmod +x script$.sh 
+* ls -l script$.sh
   }
-  ```
+  
   ![preview](images/func1.PNG)
 
 * script for calculating mathematics by using functons
@@ -118,10 +118,10 @@ func()
   
   echo "script is completed"
  ```
- return is stop after at the begnining and remaining can be execute
+ return is stop the command in betwween remaining task should be execute by close the function bracket
  ![preview](images/func3.PNG)
 
- ### CASE-STATEMENT
+ #### CASE-STATEMENT:
 
 * ```
      #!/bin/bash
@@ -141,10 +141,12 @@ func()
 ##script for case-statement
 calc()
 {
-read -p "selct your [ADD|SUB|EXIT]: " op
+read -p "selct your [ADD|SUB|MUL|DIV|EXIT]: " op
 case $op in
         ADD)echo "Add=$(($a+$b))" ;;
         SUB)echo "Sub=$(($a-$b))" ;;
+        MUL)echo "Mul=$(($a*$b))" ;;
+        DIV)echo "Div=$(($a/$b))" ;;
         EXIT)echo -e "\e[33m invalid\e[0m"
         exit ;;
         *)echo -e "\e[32m check operator \e[0m" ;;
@@ -181,9 +183,31 @@ calc
   
   calc
   ```
+
+ ```
+  #!/bin/bash
+calc()
+{
+        read -p "please select an operator [ADD|SUB|MUL|DIV]: " op
+        case $op in
+
+                ADD)echo "Add=$(($a+$b))" ;;
+                SUB)echo "Sub=$(($a-$b))" ;;
+                MUL)echo "Mul=$(($a*$b))" ;;
+                DIV)echo "Div=$(($a/$b))" ;;
+
+        esac
+calc
+}
+
+read -p "a value: " a
+read -p "b value: " b
+calc
+
+  ```
  ![preview](images/func6.PNG)
 
-### IF-STATEMENT
+### IF-STATEMENT:
 * simple -if
   ```
   -e
@@ -201,11 +225,13 @@ calc
   ```
 * test -e /etc/passwd
   echo ?
-  test -r /etc/passwd
+* test -r /etc/passwd
   echo $?
-  test -s /etc/passwd
+* test -s /etc/passwd
   echo $? 
+
  * script for simple-if statement
+   
    ```
    #!/bin/bash
    read -p "plz type valid command: " file
@@ -220,6 +246,7 @@ calc
    ![preview](images/func7.PNG) 
 
  * string test {-z -e -n -f -s -r}
+  
   ```
   var='/etc/fstab'
     [ -z "$var"]
@@ -232,12 +259,14 @@ calc
     echo $?
     [ -s "$var"]
     echo $?
-  ```  
+ ```  
   ![preview](images/func8.PNG)
   ![preview](images/func9.PNG)
+
 ### IF-ELSE 
 * script for to use if-else-fi
-  ```
+  
+```
 #!/bin/bash
 ##script for to use if-else statement
 read -p "please type full of the file: " file
@@ -263,10 +292,10 @@ read -p "please type full of the file: " file
      else
              echo "file is incorrect"
      fi
-     ```
+  ```
   ![preview](images/func10.PNG) 
 * script:2
-```
+ ```
 #!/bin/bash
 #script for cal mathematics by if-statement
 calc()
@@ -311,7 +340,7 @@ chmod +x script04.sh
 
 ![preview](images/func11.PNG)
 
-```
+ ```
 #!/bin/bash
 #script for mathametics by using function and if-statement
 
@@ -376,6 +405,7 @@ calc
 * script for start and stop the service
 
 * script for start the service
+ 
  ```
 #!/bin/bash
 #script for start the service
@@ -401,7 +431,7 @@ fi
 
 * script for stop the service
 
-```
+ ```
   #!/bin/bash
 #script for start the service
 ser=`systemctl is-disabled nfs-server.service`
@@ -477,7 +507,7 @@ then
         echo "invalid b value"
 fi
 calc
-```
+ ```
 * Numerical comparision:
   
   ```
@@ -574,7 +604,7 @@ calc
            echo "invalid input"
    fi
    calc
- ```
+  ```
 
 * script for ip-addresses pinging
 

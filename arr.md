@@ -54,6 +54,7 @@
  #!/bin/bash
  read -p "type your name: "
  read -p "type your loc: "
+
  echo "your name is $name"
  echo "your name is $loc"
  ``` 
@@ -63,6 +64,7 @@
 ```
 read -p "type your name: " name
 read -p "type your password: " pass
+
 echo -e "\nUser=$name\npassword=$pass"
 ``` 
 ![preview](images/arry.05.PNG)
@@ -71,6 +73,7 @@ echo -e "\nUser=$name\npassword=$pass"
  ```
  read -p "type your name: " name
  read -s -p "type your password: " pass
+ 
  echo -e "\nUser=\nname\npassword=$pass"
  s--> security 
  ```

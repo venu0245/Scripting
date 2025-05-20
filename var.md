@@ -7,6 +7,7 @@
   ram_var
   ```
 * properties:
+  
   ```
   ro
   rw
@@ -15,28 +16,33 @@
   export-->local
   ```
 * create a environmental variables for temporary
+  
   ```
-  name=car
+  .name=car
   echo $car
-  bash
+  .bash
   echo $car
   ```
  * if system restarts current variables can be lost 
-  ![preview](images/usr0.PNG)  
+
+  ![preview](images/usr0.PNG) 
+
 * create a environmental variable permanently
   
-  ```
-  ls -a
+* ls -a
+
   .bashrc
   .bash_profile
-  ```  
+
+* vim .bash_profile
+
   ![preview](images/usr1.PNG)
 
 * create a user and assign password it's own 
 
+*  vim test1.sh 
+  
   ```
-  vim test1.sh
-
   #!/bin/bash
 
   #script for creating a user by using variables
@@ -57,12 +63,11 @@
   ![preview](images/usr3.PNG)
 
 *  create a user and assign password automatically
+* vim test2.sh  
   ```
-  vim test2.sh
   #!/bin/bash
 
   #script for creating a user  and assign a password
-  
   
    echo "useradd sucessesful ram"
    useradd ram
@@ -73,25 +78,25 @@
   .wq!
   .chmod +x test1.sh
   ./test2.sh
-  
   ```
   ![preview](images/usr4.PNG)   
-* to changing the password for single attempt
+
+* changing the password for single attempt
+
 * passwd --help
 
-  ```
-     --stdin  read new tokens from stdin (root only)
-
-     echo <passwd_name>|passwd <user_name> --stdin 
-
-      echo red |passwd ram --stdin
-
-     Changing password for user ram.
-     passwd: all authentication tokens updated successfully.
-  ``` 
   
+* --stdin  read new tokens from stdin (root only)
+* echo <passwd_name>|passwd <user_name> --stdin 
+
+* echo red |passwd ram --stdin
+
+* Changing password for user ram.
+* passwd: all authentication tokens updated successfully.
+  
+* vim test3.sh
+
   ```
-  vim test3.sh
   #!/bin/bash
 
    #create a user and assign password  by using --stdin
@@ -125,10 +130,12 @@
 ### md5sum:message digit 5sum
 
   date |md5sum |cut -c 1-5
-* script for md5sum   
+
+* script for md5sum  
+ 
  ```    
  #!/bin/bash
-  #script for using md4sum
+  #script for using md5sum
   
   user=arjun
   
@@ -138,8 +145,8 @@
   echo $pass|passwd $user --stdin
   
   echo -e "user=$user\npasswd=$pass" 
- ```
- * ARTHMATIC SUBSTITUATIONS:
+  ```
+* ARTHMATIC SUBSTITUATIONS:
 
  ```
  echo 10+5
@@ -152,23 +159,24 @@
  echo $(($a-$b))
  echo $(($a*$b))  
  ```
-* script to create a total memory for `free -m`
+* script for calculate total memory for `free -m`
+* vim script01.sh
 
  ```
-   #!/bin/bash
-  #script to calculate to mem for free -m
-  
-  TOTAL=`free -m |awk '/Mem/{print$2}'`
-  
-  USED=`free -m |awk '/Mem/ {print$3}'`
-  
-  FREE=`free -m |awk '/Mem/ {print$4}'`
-  
-  echo "TOTAL Mem = $TOTAL MB"
-  echo "Used Mem = $(($USED*100/$TOTAL)) %"
-  
-  echo "FREE Mem = $(($FREE*100/$TOTAL)) %"
+  #!/bin/bash
+#script for cal percentage by using function
 
+TOTAL=`free -m |awk '/Mem/ {print $2}'`
+USED=`free -m |awk '/Mem/ {print $3}'`
+FREE=`free - m|awk '/Mem/ {print $4}'`
+
+echo "Total Mem = $TOTAL MB"
+echo "Used Mem = $(($USED*100/$TOTAL)) %"
+echo "Free Mem = $(($FREE*100/$TOTAL)) %"
+=========================================
+Total Mem = 1812 MB
+Used Mem = 27 %
+Free Mem = 42668 %
  ```
 
 

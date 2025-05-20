@@ -43,16 +43,23 @@
 * to change the name whole file as a same name
   ![preview](images/sed6.PNG)
 
-### To editing configuration files by using `sed` command
+### editing in configuration files committed and un-committed lines by using `sed` command
 
 * committed and un-committed lines
 
 * cat /shells/sshd.config |grep -i dns
  ![preview](images/sed7.PNG)
-* in conf file have a single word we can be search use this `sed '/UseDNS/`
+
+* in configuration file have a single word can be search use this `sed '/UseDNS/`
 * can be replace `yes/no`
+
  ![preview](images/sed8.PNG) `sed /UseDNS/s/yes/no/` 
-* To un-commited line 
+
+ ```
+  cat /etc/ssh/sshd_config |grep -i dns |sed '/UseDNS/s/#//' |sed '/UseDNS/s/no/yes/'
+ ``` 
+* To un-commited line
+
  ![preview](images/sed9.PNG)
 * if a single word number of lines can be formed
  ![preview](images/sed10.PNG)
@@ -68,9 +75,13 @@
 * configuration file `selinux`
  ![preview](images/sed15.PNG) 
 *   cat /etc/selinux/config |grep -i selinux |sed -n '/^SELINUX*/p'
- ![peview](images/sed16.PNG)
+  ![preview](images/sed16.PNG)
 *   `|sed  '/^SELINUX*/s/enforcing/permisive/'`
  ![preview](images/sed17.PNG)
+
+ ```
+  cat /etc/selinux/config |grep -i selinux |sed '/SELINUX*/P' |sed '/SELINUX/s/^/#/' |sed '/SELINUX/s/enforcing/disable/'
+ ```
 
 ### BOOT ORDER 
 *  changing the system boot order timings 
